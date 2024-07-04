@@ -14,18 +14,18 @@
   "contributes": {
     "commands": [
       {
-        "command": "workik-ai.helloWorld",
-        "title": "Hello World"
-      },
-      {
         "command": "workik.refresh",
-        "title": "Refresh Workik",
+        "title": "refresh workik extension",
         "icon": "./assets/icons/refresh.svg"
       },
       {
         "command": "workik.showWebPanel",
-        "title": "Workik",
+        "title": "show workik website",
         "icon": "./assets/icons/book.svg"
+      },
+      {
+        "command": "workik.getFileInterface",
+        "title": "show webview for reading files"
       }
     ],
     "viewsContainers": {

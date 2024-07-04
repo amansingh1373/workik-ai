@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { WebViewProvider } from './webviewProvider';
-import { refreshD, webPanelD } from './commands';
+import { refreshD, webPanelD, fileInterfaceD } from './commands';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -9,9 +9,8 @@ export function activate(context: vscode.ExtensionContext) {
     let provider = new WebViewProvider(context);
     vscode.window.registerWebviewViewProvider('workik', provider, {webviewOptions: {retainContextWhenHidden: true}});
 
-	
 
-	context.subscriptions.push(refreshD, webPanelD);
+	context.subscriptions.push(refreshD, webPanelD, fileInterfaceD);
 }
 
 export function deactivate() {}
