@@ -16,6 +16,16 @@
       {
         "command": "workik-ai.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "workik.refresh",
+        "title": "Refresh Workik",
+        "icon": "./assets/icons/refresh.svg"
+      },
+      {
+        "command": "workik.showWebPanel",
+        "title": "Workik",
+        "icon": "./assets/icons/book.svg"
       }
     ],
     "viewsContainers": {
@@ -32,6 +42,20 @@
           "id": "workik",
           "name": "",
           "type": "webview"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "workik.refresh",
+          "when": "view == workik",
+          "group": "navigation"
+        },
+        {
+          "command": "workik.showWebPanel",
+          "when": "view == workik",
+          "group": "navigation"
         }
       ]
     }

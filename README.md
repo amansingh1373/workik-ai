@@ -14,3 +14,8 @@ To create a new project, simply run:
 
 ```bash
 yo code
+```
+
+## VSCODE API USED
+
+```registerWebviewViewProvider()```
