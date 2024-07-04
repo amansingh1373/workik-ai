@@ -7,19 +7,7 @@ const App = () => {
   const history = useHistory();
 
   useEffect(() => {
-    history.push('/login'); 
-    const messageListener = (event: MessageEvent) => {
-        const message = event.data; 
-        if (message.command === 'changeRoute') {
-          history.push('/projects');
-        }
-    };
-
-    window.addEventListener('message', messageListener);
-
-    return () => {
-        window.removeEventListener('message', messageListener);
-    };
+    history.push('/projects'); 
   }, [history]);
 
   return ( 

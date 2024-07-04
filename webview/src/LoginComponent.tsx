@@ -1,8 +1,5 @@
 import './LoginComponent.css';
-// import logo from './assets/workik-short.png';
 import logo from './assets/refresh.svg';
-// import logo from './assets/person.svg';
-// import logo from './assets/select-file.svg';
 import './vscode';
 
 

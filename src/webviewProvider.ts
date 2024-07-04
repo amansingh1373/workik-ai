@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
+import { getUserExtensionVersion, updateExtension } from './update';
 
 type uriMap = {
     [key: string]: vscode.Uri;
@@ -31,11 +32,15 @@ type uriMap = {
             message => {
                 switch (message.command) {
                     case 'signin': 
-                        vscode.commands.executeCommand('workik.openURL');
+                        vscode.env.openExternal(vscode.Uri.parse(message.url));
                         break;
-                    case 'getToken':
-                        const jwtToken = this.context.globalState.get('jwtToken');
-                        this._view?.webview.postMessage({command: 'token', token: jwtToken});
+                    case 'getExtensionVersion':
+                        vscode.window.showInformationMessage('Checking for updates...');
+                        let version:string = getUserExtensionVersion();
+                        this._view?.webview.postMessage({command: 'UserVersion', version: version});
+                        break;
+                    case 'updateExtension':
+                        updateExtension();
                         break;
                     default:
                         vscode.window.showInformationMessage(`Unknown command: ${message.command}`);
@@ -70,14 +75,6 @@ type uriMap = {
                 <div id="root"></div>
                 <script>
                     const vscode = acquireVsCodeApi();
-                    
-                    /*window.addEventListener('message', event => {
-                        const message = event.data;
-                        console.log(message);
-                        vscode.postMessage(message);
-                    });*/
-                      
-                    
                 </script>
             </body>
             </html>
