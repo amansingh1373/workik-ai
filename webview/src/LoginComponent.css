@@ -1,0 +1,35 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4vw 0 4vw;
+}
+.text-wrapper {
+  text-align: center;
+}
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.button-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.button-style {
+  width: 75%;
+  background-color: rgb(3, 150, 213);
+  color: white;
+  border: none;
+  padding: 0.5rem 0 0.5rem 0;
+  font-size: 1rem;
+}
+.desc {
+  text-align: center;
+}
+p {
+  padding: 0;
+}

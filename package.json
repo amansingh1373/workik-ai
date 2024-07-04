@@ -17,7 +17,24 @@
         "command": "workik-ai.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "workik",
+          "title": "Workik AI",
+          "icon": "./assets/media/workik-short-t.png"
+        }
+    ]},
+    "views": {
+      "workik": [
+        {
+          "id": "workik",
+          "name": "",
+          "type": "webview"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

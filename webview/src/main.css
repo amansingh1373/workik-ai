@@ -1,0 +1,58 @@
+#root {
+    height: 100%;
+} 
+body, html {
+    margin: 0;
+    height: 100%;
+    font-size: 4vw;
+    background-color: rgb(21, 21, 21);
+    color: white;
+}
+
+
+
+@media (max-width: 392px) {
+    html,body {
+        font-size: clamp(16px, 16px, 16px); 
+    }
+}
+
+
+@media (min-width: 392.2px) and (max-width: 767.98px) {
+    html,body {
+        font-size: 3vw; 
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    html,body {
+        font-size: 2vw; 
+    }
+    .button-style{
+        width: 60%;
+    }
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    html,body {
+        font-size: 1.5vw; 
+    }
+    
+    .button-style{
+        width: 50%;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    html,body {
+        font-size: 1vw; 
+    }
+    
+    .button-style{
+        width: 40%;
+    }
+}
+
