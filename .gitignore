@@ -5,3 +5,4 @@ node_modules
 *.vsix
 webview/node_modules
 webview/build
+src/privatedata.ts
