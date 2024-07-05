@@ -1,4 +1,5 @@
 import { Db } from "mongodb";
+import { Client, PoolClient } from 'pg';
 
 export let initiateFetchQueryMongoDB = async (db: Db) => {
     try {
@@ -14,5 +15,16 @@ export let initiateFetchQueryMongoDB = async (db: Db) => {
         }
     } catch (err) {
         console.error('Error running query', err);
+    }
+};
+
+export let initiateFetchQueryPostGre = async (client: PoolClient) => {
+    try {
+        const res = await client.query('SELECT * FROM playing_with_neon');
+        console.log('Query Result:', res.rows);
+        return res.rows;
+    } catch (err) {
+        console.error('Error running query', err);
+        throw err; 
     }
 };

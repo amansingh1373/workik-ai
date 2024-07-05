@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { WebViewProvider } from './webviewProvider';
 import { refreshD, webPanelD, fileInterfaceD } from './commands';
 import { connectMongoDB } from './connectMongoDB';
+import { connectPostgreSQL } from './connectPostgresDB';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -9,7 +10,8 @@ export function activate(context: vscode.ExtensionContext) {
     const connectAndRegister = async () => {
         try {
             const db = await connectMongoDB();
-            const provider = new WebViewProvider(context, db);
+            const client = await connectPostgreSQL();
+            const provider = new WebViewProvider(context, db, client);
             vscode.window.registerWebviewViewProvider('workik', provider, {
                 webviewOptions: { retainContextWhenHidden: true }
             });

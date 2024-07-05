@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import { initiateFetchQueryMongoDB } from './dataBaseQueries';
+import { initiateFetchQueryMongoDB, initiateFetchQueryPostGre } from './dataBaseQueries';
 import { getUserExtensionVersion, updateExtension } from './update';
 import { Db } from 'mongodb';
+import { PoolClient } from 'pg';
 
 type uriMap = {
     [key: string]: vscode.Uri;
@@ -12,7 +13,7 @@ type uriMap = {
 
     private _view?: vscode.WebviewView;
 
-    constructor(private readonly context: vscode.ExtensionContext, private db: Db) {}
+    constructor(private readonly context: vscode.ExtensionContext, private db: Db, private client: PoolClient) {}
 
     resolveWebviewView(webviewView: vscode.WebviewView, _context: vscode.WebviewViewResolveContext, _token: vscode.CancellationToken) {
         this._view = webviewView;
@@ -54,6 +55,11 @@ type uriMap = {
                         break;
                     case 'fetchPostgresData':
                         vscode.window.showInformationMessage('Fetching data from Postgres');
+                        let getPostgresData = async () => {
+                            let postgresData = await initiateFetchQueryPostGre(this.client);
+                            this._view?.webview.postMessage({command: 'postgresData', data: postgresData});
+                        };
+                        getPostgresData();
                         break;
                     default:
                         vscode.window.showInformationMessage(`Unknown command: ${message.command}`);
